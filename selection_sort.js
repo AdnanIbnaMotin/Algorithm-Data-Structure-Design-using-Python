@@ -19,8 +19,8 @@ const swapIndex = (array, firstIndex, secondIndex) => {
 }
 
 const selectionSort = (array, initialIndex) => {
-    for (let i = initialIndex; i < array.length; i++) {
-        swapIndex(array, initialIndex, IndexOfMinValue(array, initialIndex));
+    for (let i = 0; i < array.length; i++) {
+        swapIndex(array, initialIndex, IndexOfMinValue(array, i));
         initialIndex+=1;
     }
     return array;
