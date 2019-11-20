@@ -13,7 +13,7 @@ let max = primes.length - 1;
 
 while(min <= max) {
    let middle = Math.floor((min + max) / 2);
-   
+
    if (primes[middle] === guess) {
        console.log(`Found the number Index: ${middle-1} and Number: ${primes[middle]}`);
        return;
@@ -24,4 +24,5 @@ while(min <= max) {
    else if (primes[middle] > guess) {
        max = middle -1;
    }
+   return -1;
 }
