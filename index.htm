@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1 id="target">Click suffle to start the game</h1>
+    <h1 id="chance">Given Chance: 0</h1>
+    <h1 id="draw">Draw: 0</h1>
+
+    <button id="btn_suffle" onclick="suffle()">Suffle</button>
+    <button id="btn_draw" onclick="draw()" disabled>Draw Dice</button>
+    <button id="btn_chance" onclick="chances()" disabled>Chance</button>
+
+    <script>
+        let targetNumber = 0;
+        let numberOfChance = 0;
+        
+        let btn_suffle = document.getElementById("btn_suffle");
+        let btn_chance = document.getElementById('btn_chance');
+        let btn_draw = document.getElementById('btn_draw');
+        let chance = document.getElementById('chance');
+
+        const getRnadomNumner = () => {
+            let numberOne = Math.floor(Math.random() * 6) + 1;
+            let numberTwo = Math.floor(Math.random() * 6) + 1;
+            return [numberOne, numberTwo];
+        }
+
+        const suffle = () => {
+            let target = document.getElementById('target');
+            let numbers = getRnadomNumner();
+            targetNumber = numbers[0] + numbers[1];
+            target.innerHTML = `Target to won: ${targetNumber}`;
+            btn_chance.disabled = false;
+            btn_suffle.disabled = true;
+        }
+        
+        const chances = () => {
+            numberOfChance = Math.floor(Math.random() * 6) +1;
+            chance.innerHTML = `Given Chance: ${numberOfChance}`;
+            btn_chance.disabled = true;
+            btn_draw.disabled = false;
+        }
+
+        const draw = () => {
+            let wonTheMath = document.getElementById('draw');
+            let draw = getRnadomNumner();
+            let result = draw[0] + draw[1];
+            if (result == targetNumber) {
+                wonTheMath.innerHTML = `You draw: ${result} <p>Hurrah You win the match</p>`;
+                btn_draw.disabled = true;
+            }
+            else {
+                wonTheMath.innerHTML = `You draw: ${result}`;
+            }
+
+            numberOfChance--;
+            chance.innerHTML = `Remaining chances: ${numberOfChance}`;
+            if (numberOfChance == 0) {
+                wonTheMath.innerHTML = "You lost the match";
+                btn_draw.disabled = true;
+            }
+        }
+    </script>
+</body>
+
+</html>
