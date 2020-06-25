@@ -8,10 +8,9 @@ from stack_1 import Stack
 def devideByTwo(number):
 
     s = Stack()
-    while number // 2 != 0:
+    while number != 0:
         s.push(number % 2)
         number //= 2
-    s.push(1)
 
     numberToStr = ""
     while s.size() > 0:
@@ -19,4 +18,4 @@ def devideByTwo(number):
 
     return numberToStr
 
-print(devideByTwo(12))
+print(devideByTwo(10))
